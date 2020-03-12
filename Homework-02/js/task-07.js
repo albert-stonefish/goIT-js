@@ -2,34 +2,29 @@
 console.log("task_07");
 
 const logins = ["Mango", "robotGoogles", "Poly", "Aj4x1sBozz", "qwerty123"];
+let message;
 
 const isLoginValid = function(login) {
-  if (login.length >= 4 === true && login.length <= 16 === true) {
-    return true;
-  } else {
-    return false;
-  }
+  return login.length >= 4 && login.length <= 16;
 };
 
 const isLoginUnique = function(logins, login) {
-  if (logins.includes(login) === false) {
-    return true;
-  } else {
-    return false;
-  }
+  return logins.includes(login) === false;
 };
 
 const addLogin = function(logins, login) {
-  if (isLoginValid(login) === true) {
-    if (isLoginUnique(logins, login) === true) {
+  if (isLoginValid(login)) {
+    if (isLoginUnique(logins, login)) {
       logins = logins.push(login);
-      return "Login successfully added!";
+      message = "Login successfully added!";
     } else {
-      return "This login is in use!";
+      message = "This login is in use!";
     }
   } else {
-    return "Error! Login must not be shorter than 4 or longer than 16 symbols";
+    message =
+      "Error! Login must not be shorter than 4 or longer than 16 symbols";
   }
+  return message;
 };
 
 console.log(addLogin(logins, "Ajax"));

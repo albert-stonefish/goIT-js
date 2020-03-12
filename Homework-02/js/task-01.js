@@ -1,12 +1,12 @@
 "use strict";
 console.log("task_01");
 
-const logItems = function(logItems) {
+const logItems = function(items) {
   let number = 0;
   let item;
 
-  for (item of logItems) {
-    item = logItems[number];
+  for (let i = 0; i < items.length; i++) {
+    item = items[number];
     number += 1;
     console.log(`${number} - ${item}`);
   }

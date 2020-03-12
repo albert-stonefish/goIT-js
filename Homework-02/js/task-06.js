@@ -8,10 +8,11 @@ let total = 0;
 input = prompt("Enter any number, please");
 
 while (input !== null) {
-  if (Number.isNaN(Number.parseFloat(input)) === true) {
+  input = Number.parseFloat(input);
+  if (Number.isNaN(input)) {
     alert("Try to enter a number :)");
   } else {
-    numbers.push(Number.parseFloat(input));
+    numbers.push(input);
   }
   input = prompt("Enter any number, please");
 }

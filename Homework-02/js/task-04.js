@@ -2,7 +2,8 @@
 console.log("task_04");
 
 const formatString = function(string) {
-  if (string.length > 40) {
+  const stringMaxLength = 40;
+  if (string.length > stringMaxLength) {
     string = string.substring(0, 40);
     string = string + "...";
   } else {

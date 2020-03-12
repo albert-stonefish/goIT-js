@@ -21,27 +21,33 @@ const account = {
 // let currentTransaction = [];
 
 const createTransaction = function(amount, type) {
-  const transactionId = Number.parseInt(transaction.id) + 1;
-  let transactionType = type;
-  let transactionAmount = amount;
-  transaction.id = transactionId;
-  if (transaction.type === "deposit") {
-    account.balance = account.balance + transaction.amount;
-    transaction.status = "passed";
-  } else if (transaction.type === "withdraw") {
-    if (account.balance < transaction.amount) {
+  const nTran = {};
+  nTran.id = account.transactionsLog.length + 1;
+  nTran.type = type;
+  nTran.amount = amount;
+  // let transactionStatus;
+  // transaction.id = transactionId;
+  if (type === "deposit") {
+    account.balance = account.balance + amount;
+    nTran.status = "passed";
+  } else if (type === "withdraw") {
+    if (account.balance < amount) {
       console.log("It is not enough funds on your account");
-      transaction.status = "denied";
+      nTran.status = "denied";
     } else {
-      account.balance = account.balance - transaction.amount;
-      transaction.status = "passed";
+      account.balance = account.balance - amount;
+      nTran.status = "passed";
     }
   }
+  // transaction.id = transactionId;
+  // transaction.type = transactionType;
+  // transaction.amount = transactionAmount;
+  // transaction.status = transactionStatus;
   // currentTransaction = [transaction];
   // account.transactionsLog = account.transactionsLog [transaction].slice();
   // account.transactionsLog[transaction.id].id = transaction.id;
   // account.transactionsLog.push(...[transaction]);
-  account.transactionsLog.push(transaction);
+  account.transactionsLog.push(nTran);
   return transaction;
 };
 

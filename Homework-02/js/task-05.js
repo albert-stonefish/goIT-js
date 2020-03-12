@@ -2,14 +2,8 @@
 console.log("task_05");
 
 const checkForSpam = function(message) {
-  let checkResult;
   message = message.toLowerCase();
-  if (message.includes("sale") || message.includes("spam")) {
-    checkResult = true;
-  } else {
-    checkResult = false;
-  }
-  return checkResult;
+  return message.includes("sale") || message.includes("spam");
 };
 
 console.log(checkForSpam("Latest technology news"));
