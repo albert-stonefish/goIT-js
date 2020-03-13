@@ -2,77 +2,66 @@
 console.log("task_07");
 
 const transaction = {
-  // DEPOSIT: 'deposit';
-  // WITHDRAW: 'withdraw';
+  DEPOSIT: "deposit",
+  WITHDRAW: "withdraw",
   id: 0
   // type,
   // amount,
   // status
 };
 
-// let id = "0000";
-// let amount = 0;
-
 const account = {
   balance: 0,
-  transactionsLog: []
-};
+  transactions: [],
 
-// let currentTransaction = [];
-
-const createTransaction = function(amount, type) {
-  const nTran = {};
-  nTran.id = account.transactionsLog.length + 1;
-  nTran.type = type;
-  nTran.amount = amount;
-  // let transactionStatus;
-  // transaction.id = transactionId;
-  if (type === "deposit") {
-    account.balance = account.balance + amount;
-    nTran.status = "passed";
-  } else if (type === "withdraw") {
-    if (account.balance < amount) {
-      console.log("It is not enough funds on your account");
-      nTran.status = "denied";
-    } else {
-      account.balance = account.balance - amount;
-      nTran.status = "passed";
+  createTransaction(amount, type) {
+    const currentTransaction = {};
+    currentTransaction.id = account.transactions.length + 1;
+    currentTransaction.type = type;
+    currentTransaction.amount = amount;
+    if (type === "deposit") {
+      account.balance = account.balance + amount;
+      currentTransaction.status = "passed";
+    } else if (type === "withdraw") {
+      if (account.balance < amount) {
+        console.log("It is not enough funds on your account");
+        currentTransaction.status = "denied";
+      } else {
+        account.balance = account.balance - amount;
+        currentTransaction.status = "passed";
+      }
     }
-  }
-  // transaction.id = transactionId;
-  // transaction.type = transactionType;
-  // transaction.amount = transactionAmount;
-  // transaction.status = transactionStatus;
-  // currentTransaction = [transaction];
-  // account.transactionsLog = account.transactionsLog [transaction].slice();
-  // account.transactionsLog[transaction.id].id = transaction.id;
-  // account.transactionsLog.push(...[transaction]);
-  account.transactionsLog.push(nTran);
-  return transaction;
-};
 
-const deposit = function(amount) {
-  // account.transactionsLog.push(transaction);
-  return createTransaction(amount, "deposit");
-};
+    // account.transactionsLog = account.transactionsLog [transaction].slice();
+    // account.transactionsLog[transaction.id].id = transaction.id;
+    // account.transactionsLog.push(...[transaction]);
+    // account.transactions.push(currentTransaction);
+    return transaction;
+  },
 
-const withdraw = function(amount) {
-  // account.transactionsLog.push(transaction);
-  return createTransaction(amount, "withdraw");
-};
+  deposit(amount) {
+    account.transactions.push(transaction);
+    return createTransaction(amount, "deposit");
+  },
 
-const getBalance = function() {
-  return `Funds on your account: ${account.balance}cr`;
-};
+  withdraw(amount) {
+    account.transactions.push(transaction);
+    return createTransaction(amount, "withdraw");
+  },
 
-const getTransactionDetails = function(id) {
-  // for (let i = 0, i < account.transactionLog.length, i += 1)
-  // if (account.transactionsLog[i].id === id) {
-  // return account.transactionsLog[i];
-  // } else {};
-};
+  getBalance() {
+    return `Funds on your account: ${account.balance}cr`;
+  },
 
-const getTransactionType = function(type) {};
+  getTransactionDetails(id) {
+    // for (let i = 0, i < account.transactionLog.length, i += 1)
+    // if (account.transactionsLog[i].id === id) {
+    // return account.transactionsLog[i];
+    // } else {};
+  },
+
+  getTransactionType(type) {}
+};
 
 console.log(transaction);
 // console.log([transaction].slice());

@@ -8,17 +8,17 @@ const isLoginValid = function(login) {
   return login.length >= 4 && login.length <= 16;
 };
 
-const isLoginUnique = function(logins, login) {
-  return logins.includes(login) === false;
+const isLoginNotUnique = function(logins, login) {
+  return logins.includes(login);
 };
 
 const addLogin = function(logins, login) {
   if (isLoginValid(login)) {
-    if (isLoginUnique(logins, login)) {
+    if (isLoginNotUnique(logins, login)) {
+      message = "This login is in use!";
+    } else {
       logins = logins.push(login);
       message = "Login successfully added!";
-    } else {
-      message = "This login is in use!";
     }
   } else {
     message =
