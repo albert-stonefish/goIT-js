@@ -1,52 +1,47 @@
 "use strict";
 console.log("task_07");
 
-const transaction = {
-  DEPOSIT: "deposit",
-  WITHDRAW: "withdraw",
-  id: 0
-  // type,
-  // amount,
-  // status
-};
+const transaction = {};
 
 const account = {
   balance: 0,
   transactions: [],
 
-  createTransaction(amount, type) {
+  createTransaction(amount, type, status) {
     const currentTransaction = {};
     currentTransaction.id = account.transactions.length + 1;
     currentTransaction.type = type;
     currentTransaction.amount = amount;
-    if (type === "deposit") {
-      account.balance = account.balance + amount;
-      currentTransaction.status = "passed";
-    } else if (type === "withdraw") {
-      if (account.balance < amount) {
-        console.log("It is not enough funds on your account");
-        currentTransaction.status = "denied";
-      } else {
-        account.balance = account.balance - amount;
-        currentTransaction.status = "passed";
-      }
-    }
-
-    // account.transactionsLog = account.transactionsLog [transaction].slice();
-    // account.transactionsLog[transaction.id].id = transaction.id;
-    // account.transactionsLog.push(...[transaction]);
-    // account.transactions.push(currentTransaction);
-    return transaction;
+    currentTransaction.status = status;
+    return currentTransaction;
   },
 
   deposit(amount) {
-    account.transactions.push(transaction);
-    return createTransaction(amount, "deposit");
+    let message;
+    let status = "passed";
+    message = "Transaction passed";
+    account.balance = account.balance + amount;
+    console.log(message);
+    return account.transactions.push(
+      account.createTransaction(amount, "deposit", status)
+    );
   },
 
   withdraw(amount) {
-    account.transactions.push(transaction);
-    return createTransaction(amount, "withdraw");
+    let message;
+    let status;
+    if (account.balance < amount) {
+      message = "It is not enough funds on your account. Transaction denied";
+      status = "denied";
+    } else {
+      message = "Transaction passed";
+      status = "passed";
+      account.balance = account.balance - amount;
+    }
+    console.log(message);
+    return account.transactions.push(
+      account.createTransaction(amount, "withdraw", status)
+    );
   },
 
   getBalance() {
@@ -54,43 +49,61 @@ const account = {
   },
 
   getTransactionDetails(id) {
-    // for (let i = 0, i < account.transactionLog.length, i += 1)
-    // if (account.transactionsLog[i].id === id) {
-    // return account.transactionsLog[i];
-    // } else {};
+    for (let i = 0; i < account.transactions.length; i += 1) {
+      if (account.transactions[i].id === id) {
+        return account.transactions[i];
+      } else {
+      }
+    }
   },
 
-  getTransactionType(type) {}
+  getTransactionType(type) {
+    let totalOfType = 0;
+    let message;
+    for (let i = 0; i < account.transactions.length; i++) {
+      if (type === "deposit") {
+        if (account.transactions[i].type === type) {
+          totalOfType = totalOfType + account.transactions[i].amount;
+          message = "Total deposited funds equals";
+        } else {
+        }
+      } else {
+        if (
+          account.transactions[i].type === type &&
+          account.transactions[i].status === "passed"
+        ) {
+          totalOfType = totalOfType + account.transactions[i].amount;
+          message = "Total withdrawn funds equals";
+        } else {
+        }
+      }
+    }
+    return `${message} ${totalOfType}`;
+  }
 };
 
-console.log(transaction);
-// console.log([transaction].slice());
-console.log(deposit(500));
-// console.log(currentTransaction);
-// console.log(transaction);
-console.log(account);
-console.log(account.transactionsLog);
-// console.log(account.transactionsLog[transaction.id].id);
-console.log(account.transactionsLog[1]);
-console.log(account.transactionsLog[2]);
-console.log(getBalance());
+console.log(account.deposit(500)); // +500
 
-console.log(withdraw(550));
-console.log(account);
-console.log(account.transactionsLog);
-// console.log(account.transactionsLog[transaction.id].id);
+console.log(account.getBalance()); // balance
 
-console.log(account.transactionsLog[0]);
-console.log(account.transactionsLog[1]);
-console.log(account.transactionsLog[2]);
-console.log(getBalance());
+console.log(account.withdraw(550)); // -550
 
-console.log(deposit(1000));
-console.log(account);
-console.log(account.transactionsLog);
-console.log(account.transactionsLog[0]);
-console.log(account.transactionsLog[1]);
-console.log(account.transactionsLog[2]);
-console.log(getBalance());
+console.log(account.getBalance()); // balance
+
+console.log(account.withdraw(400)); // -400
+
+console.log(account.getBalance()); // balance
+
+console.log(account.deposit(1000)); // +1000
+
+console.log(account.getBalance()); // balance
+
+console.log(account.transactions); //transactions history
+
+console.log(account.getTransactionDetails(2)); //transaction history of transaction id:2
+
+console.log(account.getTransactionType("deposit")); //total successfully deposited funds
+
+console.log(account.getTransactionType("withdraw")); //total successfully withdrawn funds
 
 console.log("...");
