@@ -1,14 +1,15 @@
 "use strict";
 console.log("task_01");
 
-const Account = function({ login, email }) {
-  this.login = login;
-  this.email = email;
-};
-
-Account.prototype.getInfo = function() {
-  console.log(`Login: ${this.login}, Email: ${this.email}`);
-};
+class Account {
+  constructor({ login, email }) {
+    this.login = login;
+    this.email = email;
+  }
+  getInfo() {
+    console.log(`Login: ${this.login}, Email: ${this.email}`);
+  }
+}
 
 console.log(Account.prototype.getInfo);
 
