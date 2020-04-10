@@ -9,7 +9,7 @@ export default [
     balance: 2811,
     skills: ["ipsum", "lorem"],
     gender: "male",
-    age: 37
+    age: 37,
   },
   {
     id: "7a3cbd18-57a1-4534-8e12-1caad921bda1",
@@ -21,7 +21,7 @@ export default [
     balance: 3821,
     skills: ["tempor", "mollit", "commodo", "veniam", "laborum"],
     gender: "female",
-    age: 34
+    age: 34,
   },
   {
     id: "88beb2f3-e4c2-49f3-a0a0-ecf957a95af3",
@@ -33,7 +33,7 @@ export default [
     balance: 3793,
     skills: ["nulla", "anim", "proident", "ipsum", "elit"],
     gender: "male",
-    age: 24
+    age: 24,
   },
   {
     id: "249b6175-5c30-44c6-b154-f120923736f5",
@@ -45,7 +45,7 @@ export default [
     balance: 2278,
     skills: ["adipisicing", "irure", "velit"],
     gender: "female",
-    age: 21
+    age: 21,
   },
   {
     id: "334f8cb3-eb04-45e6-abf4-4935dd439b70",
@@ -57,7 +57,7 @@ export default [
     balance: 3951,
     skills: ["ex", "culpa", "nostrud"],
     gender: "male",
-    age: 27
+    age: 27,
   },
   {
     id: "150b00fb-dd82-427d-9faf-2879ea87c695",
@@ -69,7 +69,7 @@ export default [
     balance: 1498,
     skills: ["non", "amet", "ipsum"],
     gender: "male",
-    age: 38
+    age: 38,
   },
   {
     id: "e1bf46ab-7168-491e-925e-f01e21394812",
@@ -81,6 +81,6 @@ export default [
     balance: 2764,
     skills: ["lorem", "veniam", "culpa"],
     gender: "female",
-    age: 39
-  }
+    age: 39,
+  },
 ];
