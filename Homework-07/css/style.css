@@ -1,0 +1,18 @@
+#validation-input {
+  border: 3px solid #bdbdbd;
+}
+
+#validation-input.valid {
+  border-color: #4caf50;
+}
+
+#validation-input.invalid {
+  border-color: #f44336;
+}
+
+#counter,
+#controls,
+#font-size-control {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
