@@ -1,5 +1,8 @@
 'use strict';
 
+import menuItems from '../menu.json';
+import menuTemplate from '../template/menu-template.hbs';
+
 const refs = {
   body: document.querySelector('body'),
   themeSwitch: document.querySelector('input.js-switch-input'),
@@ -12,10 +15,6 @@ const theme = {
 };
 
 let bckgrndTheme = localStorage.getItem('bckgrndTheme');
-
-// import source from '../menu.json';
-// const source = JSON.parse(importedSource);
-// console.log(source);
 
 if (bckgrndTheme === null) {
   bckgrndTheme = theme.LIGHT;
@@ -38,15 +37,8 @@ const toggleTheme = function () {
 
 refs.themeSwitch.addEventListener('change', toggleTheme);
 
-// const Handlebars = require('handlebars');
-// const template = Handlebars.compile("Name: {{name}}");
-// console.log(template({ name: "Nils" }));
-
-// import menuTemplate from "../template/menu-template.hbs";
-// console.log(menuTemplate);
-
-// console.log(menuTemplate);
-
-// const template = Handlebars;
-
-// refs.menu.innerHTML = template(source);
+menuItems.forEach(item => {
+  let itemHTML = menuTemplate(item);
+  console.log(itemHTML);
+  refs.menu.insertAdjacentHTML('beforeend', itemHTML);
+});
