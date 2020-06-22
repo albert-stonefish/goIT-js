@@ -15,13 +15,18 @@ const refs = {
   body: document.querySelector("body"),
 };
 
+let currentColor = 0;
 let timerId = null;
 
 const setRandomColor = function () {
-  console.log("color!");
-  const color = randomIntegerFromInterval(0, colors.length - 1);
-  refs.body.style.backgroundColor = colors[color];
-  console.log(color);
+  const nextColor = randomIntegerFromInterval(0, colors.length - 1);
+  if (nextColor === currentColor) {
+    currentColor = nextColor + 1;
+  } else {
+    currentColor = nextColor;
+  }
+  refs.body.style.backgroundColor = colors[currentColor];
+  console.log(`color:`, currentColor);
 };
 
 const randomIntegerFromInterval = (min, max) => {
@@ -29,15 +34,15 @@ const randomIntegerFromInterval = (min, max) => {
 };
 
 const startLightshow = function () {
-  console.log("lol start");
-  refs.startButton.removeEventListener("click", startLightshow);
+  console.log("start");
+  refs.startButton.disabled = true;
   timerId = setInterval(setRandomColor, 1000);
 };
 
 const stopLightshow = function () {
-  console.log("lol staph!");
+  console.log("staph!");
   clearInterval(timerId);
-  refs.startButton.addEventListener("click", startLightshow);
+  refs.startButton.disabled = false;
 };
 
 refs.startButton.addEventListener("click", startLightshow);
